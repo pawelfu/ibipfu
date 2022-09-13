@@ -29,8 +29,9 @@ const Header = () => (
 );
 
 const App = () => {
-    let appInsights = null;
-
+    let appInsights = require("applicationinsights");
+    appInsights.setup("InstrumentationKey=5e2eb9b7-9e08-410b-adff-bc4a0461906c;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/").start();
+    
     function trackException() {
         appInsights.trackException({ error: new Error('some error'), severityLevel: SeverityLevel.Error });
     }
@@ -64,7 +65,7 @@ const App = () => {
 
     return (
       <BrowserRouter>
-        <TelemetryProvider instrumentationKey="INSTRUMENTATION_KEY" after={() => { appInsights = getAppInsights() }}>
+        <TelemetryProvider instrumentationKey="5e2eb9b7-9e08-410b-adff-bc4a0461906c" after={() => { appInsights = getAppInsights() }}>
           <div >
             <Header />
             <Route exact path="/" component={Home} />
