@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import {SeverityLevel} from '@microsoft/applicationinsights-web';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
 import './App.css';
 import { getAppInsights } from './TelemetryService';
 import TelemetryProvider from './telemetry-provider';
